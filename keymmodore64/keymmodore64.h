@@ -22,7 +22,6 @@
 
 /* 
 Option RGB LED (Replacement of original C-64 Power LED):
-  Use a common anode RGB LED, so is ACTIVE LOW (inverted logic)
   Only  with Arduino Leonardo and Teensy 2.0
   - PC Mode: LED Green
   - Any SHIFT pressed (in PC Mode):  LED Cyan (Green+Blue)
@@ -51,6 +50,10 @@ Option TX and RX LEDs of Leonardo and ProMicro boards:
 #define LED_COMMON_CATHODE
 //#define LED_COMMON_ANODE
 
+#if defined(LED_COMMON_ANODE) && defined(LED_COMMON_CATHODE)
+#error "Only LED_COMMON_ANODE or LED_COMMON_CATHODE can be defined"
+#endif
+
 #if defined(LED_COMMON_ANODE)
 #define setPinCommon( led )   writePinHigh( led )  
 #define setLedOn( led )       writePinLow( led )
@@ -63,9 +66,9 @@ Option TX and RX LEDs of Leonardo and ProMicro boards:
 #define setLedOff( led )      writePinLow( led )
 #endif
 
-#define bmc64_p0    B4  // RPI GPIO 26
-#define bmc64_p1    B5  // RPI GPIO 20
-#define bmc64_p2    B6  // RPI GPIO 21
+#define bmc64_p0    B4  // RPI GPIO 09
+#define bmc64_p1    B5  // RPI GPIO 10
+#define bmc64_p2    B6  // RPI GPIO 11
 
 // PImmodore keyboard modes
 #define BMC64_PIMMODORE_MODE_PC   0

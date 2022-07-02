@@ -1,6 +1,9 @@
 # MCU name (change according your MCU)
 MCU = at90usb1286
 
+# Bootloader selection
+BOOTLOADER = atmel-dfu
+
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the
 #     processor frequency in Hz. You can then use this symbol in your source code to
@@ -51,8 +54,8 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   change yes to no to disable
 #
 TAP_DANCE_ENABLE = no        # Tapping Keys (pressing more than once)
-BOOTMAGIC_ENABLE ?= no       # Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE ?= yes       # Mouse keys(+4700)
+BOOTMAGIC_ENABLE = yes       # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE = no         # Mouse keys(+4700)
 EXTRAKEY_ENABLE ?= yes       # Audio control and System control(+450)
 CONSOLE_ENABLE ?= yes        # Console for debug(+400)
 COMMAND_ENABLE ?= yes        # Commands for debug and configuration
